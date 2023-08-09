@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-	<meta name="generator" content="Hugo 0.101.0" />
+	<meta name="generator" content="Hugo 0.117.0">
     <meta charset="utf-8">
 <title>Introduction to Artificial Neural Networks</title>
 <meta name="description" content="Intro to ANN Presentation">
@@ -228,21 +228,21 @@ sheer complexity of connections between neurons;</li>
 <thead>
 <tr>
 <th>Area (sq ft) (x)</th>
-<th>Price (y)</th>
+<th>Price (y) in USD</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>2,104</td>
-<td>$$399,900$</td>
+<td>$399,900$</td>
 </tr>
 <tr>
 <td>1,600</td>
-<td>$$329,900$</td>
+<td>$329,900$</td>
 </tr>
 <tr>
 <td>2,400</td>
-<td>$$369,000$</td>
+<td>$369,000$</td>
 </tr>
 </tbody>
 </table>
@@ -263,7 +263,7 @@ sheer complexity of connections between neurons;</li>
 <br /><br />
 
 
-<span class='fragment ' ><em>$$180$ per sq ft.</em></span>
+<span class='fragment ' ><em>$180 per sq ft.</em></span>
 
 </p>
 </section><section>
@@ -281,7 +281,7 @@ sheer complexity of connections between neurons;</li>
 <h2 id="artificial-neural-networks-7">Artificial Neural Networks</h2>
 <h6 id="motivation-example-taken-from-jay-alammar-a-hrefhttpsjalammargithubiovisual-interactive-guide-basics-neural-networks-target_blankblog-posta-3">Motivation Example (taken from Jay Alammar <a href="https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/" target="_blank">blog post</a>)</h6>
 <ul>
-<li>Multiplying $2,000$ sq ft by $180$ gives us $$360,000$.</li>
+<li>Multiplying $2,000$ sq ft by $180$ gives us  $360,000$.</li>
 <li>Calculating the prediction is simple multiplication.</li>
 <li><strong><em>We needed to think about the weight we’ll be multiplying by.</em></strong></li>
 <li>That is what training means!</li>
@@ -298,18 +298,18 @@ sheer complexity of connections between neurons;</li>
 <tbody>
 <tr>
 <td>2,104</td>
-<td>$$399,900$</td>
-<td>$$378,720$</td>
+<td>$399,900$</td>
+<td>$378,720$</td>
 </tr>
 <tr>
 <td>1,600</td>
-<td>$$329,900$</td>
-<td>$$288,000$</td>
+<td>$329,900$</td>
+<td>$288,000$</td>
 </tr>
 <tr>
 <td>2,400</td>
-<td>$$369,000$</td>
-<td>$$432,000$</td>
+<td>$369,000$</td>
+<td>$432,000$</td>
 </tr>
 </tbody>
 </table>
@@ -347,23 +347,23 @@ sheer complexity of connections between neurons;</li>
 <tbody>
 <tr>
 <td>2,104</td>
-<td>$$399,900$</td>
-<td>$$378,720$</td>
-<td>$$21$</td>
+<td>$399,900$</td>
+<td>$378,720$</td>
+<td>$21$</td>
 <td>$449$</td>
 </tr>
 <tr>
 <td>1,600</td>
-<td>$$329,900$</td>
-<td>$$288,000$</td>
-<td>$$42$</td>
+<td>$329,900$</td>
+<td>$288,000$</td>
+<td>$42$</td>
 <td>$1756$</td>
 </tr>
 <tr>
 <td>2,400</td>
-<td>$$369,000$</td>
-<td>$$432,000$</td>
-<td>$$-63$</td>
+<td>$369,000$</td>
+<td>$432,000$</td>
+<td>$-63$</td>
 <td>$3969$</td>
 </tr>
 </tbody>
@@ -970,7 +970,7 @@ dataset</em>;</li>
 of the input example belonging to each of the classes</em> in my problem;</li>
 <li>One of the activation functions available at <code>Keras</code>:</li>
 </ul>
-<pre><code class="language-python">model.add(Dense(2, activation=&quot;softmax&quot;))
+<pre><code class="language-r">layer_dense(units = 2, activation = 'softmax')
 </code></pre>
 
 
@@ -1036,6 +1036,128 @@ of the input example belonging to each of the classes</em> in my problem;</li>
 <h2 id="artificial-neural-networks-53">Artificial Neural Networks</h2>
 <h3 id="what-about-the-overfitting">What about the overfitting?</h3>
 <img src="overfitting.png" width="300px"/>
+</section><section>
+<h2 id="interpretation-of-the-test-set">Interpretation of the Test Set</h2>
+<h3 id="does-perfect-metric-on-the-test-set-mean-the-model-is-perfect">Does Perfect Metric on the Test Set Mean the Model is Perfect?</h3>
+<p><strong>Not necessarily:</strong> In no non-trivial problem will you have access to a completely representative database of the problem.
+Evaluating with a test set <em>alleviates</em> but doesn&rsquo;t solve the problem.
+There will never be enough examples to perfectly model the phenomenon.</p>
+</section><section>
+<h2 id="analysis-of-model-error">Analysis of Model Error</h2>
+<h3 id="types-of-errors">Types of Errors</h3>
+<ul>
+<li>Prediction error can be divided into three parts:
+<ul>
+<li><strong>Irreducible Error:</strong> cannot be eliminated regardless of the algorithm used.
+<ul>
+<li><strong>Introduced from the chosen problem framework</strong>.</li>
+<li><strong>Caused by unknown factors</strong>.</li>
+</ul>
+</li>
+<li><strong>Bias Error:</strong> assumptions made by a model to make the target function easier to learn.</li>
+<li><strong>Variance Error:</strong> the amount the target function estimate will change if different training data are used.</li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h2 id="analysis-of-model-error-1">Analysis of Model Error</h2>
+<h3 id="bias-error">Bias Error</h3>
+<ul>
+<li>Difference between the expected (or average) prediction of our model and the correct value we are trying to predict.</li>
+<li>Imagine repeating the entire model-building process more than once:
+<ul>
+<li><strong>Each time you gather new data and perform a new analysis, you create a new model.</strong></li>
+<li><strong>Due to randomness in the underlying data sets, resulting models will have a variety of predictions.</strong></li>
+<li><strong>Measures how far, on average, predictions of these models are from the correct value.</strong></li>
+</ul>
+</li>
+<li>Our model has bias if it systematically predicts below or above the target variable.</li>
+</ul>
+</section><section>
+<h2 id="analysis-of-model-error-2">Analysis of Model Error</h2>
+<h3 id="variance-error">Variance Error</h3>
+<ul>
+<li>In a sense, captures the <strong>model&rsquo;s generalization capability</strong>.</li>
+<li>How much our prediction would change if we trained it with different data.</li>
+<li>Ideally, it shouldn&rsquo;t change much from one training data set to the next.</li>
+<li>Algorithms with high variance are <strong>strongly influenced by the specifics of training data.</strong></li>
+<li>Generally, nonlinear machine learning algorithms that are very flexible have <strong>high variance.</strong>
+<ul>
+<li><strong>For example, Polynomial Regression with high-degree polynomials!</strong></li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h2 id="the-bias-variance-tradeoff">The Bias-Variance Tradeoff</h2>
+<ul>
+<li>
+<p><strong>Bias</strong> error arises due to incorrect assumptions made by the learning algorithm. Excessive bias can lead the algorithm to overlook important connections between features and target outcomes, resulting in underfitting.</p>
+</li>
+<li>
+<p><strong>Variance</strong> represents the error stemming from the algorithm&rsquo;s susceptibility to minor variations in the training dataset. Elevated variance might occur when the algorithm models the random noise present in the training data, causing overfitting.</p>
+</li>
+</ul>
+</section><section>
+<h2 id="dilemma-variance-vs-bias">Dilemma: Variance vs Bias</h2>
+<ul>
+<li>Low bias: suggests fewer assumptions about the shape of the target function.
+<ul>
+<li><strong>Regression Trees, KNN Regression</strong></li>
+</ul>
+</li>
+<li>High bias: suggests more assumptions about the shape of the target function.
+<ul>
+<li><strong>Linear Regression, Logistic Regression</strong></li>
+</ul>
+</li>
+<li>Low variance: suggests small changes in the estimate of the target function with changes in the training data set.
+<ul>
+<li><strong>Linear Regression, Logistic Regression</strong></li>
+</ul>
+</li>
+<li>High variance: suggests large changes in the estimate of the target function with changes in the training data set.
+<ul>
+<li><strong>Regression Trees, KNN Regression</strong></li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h2 id="dilemma-variance-vs-bias-1">Dilemma: Variance vs Bias</h2>
+<img src="variance_x_bias.png" width="400px"/>
+<br />
+<ul>
+<li>Increasing bias will decrease variance.</li>
+<li>Increasing variance will decrease bias.</li>
+</ul>
+</section><section>
+<h2 id="dilemma-variance-vs-bias-2">Dilemma: Variance vs Bias</h2>
+<h2 id="tradeoff">Tradeoff</h2>
+<img src="bias_variance1.png" width="450px"/>
+</section><section>
+<h2 id="dilemma-variance-vs-bias-3">Dilemma: Variance vs Bias</h2>
+<ul>
+<li>A very simple model with few parameters has high Bias and low Variance.</li>
+<li>A complex model with a large number of parameters will have high Variance and low Bias.</li>
+<li>One should aim for balance, avoiding overfitting while not underfitting the data.</li>
+</ul>
+</section><section>
+<h2 id="dilemma-variance-vs-bias-4">Dilemma: Variance vs Bias</h2>
+<ul>
+<li>Models should try to <strong>generalize</strong> beyond what is observed in the training set.</li>
+<li><strong>Regularization</strong> plays a role in controlling the overfitting of classifiers.</li>
+</ul>
+</section><section>
+<h2 id="visualizing-the-overfitting">Visualizing the Overfitting</h2>
+<h3 id="how-decision-trees-change-after-removing-a-few-examples">How Decision Trees change after removing a few examples</h3>
+<img src="fit_tree.png" width="300px"/>
+<img src="fit_tree_mod.png" width="300px"/>
+</section><section>
+<h2 id="regularization">Regularization</h2>
+<ul>
+<li>Decreases variance by reducing learning effectiveness.</li>
+<li>Penalizes model complexity.</li>
+<li>Nearly all learning algorithms have some form of regularization mechanism.</li>
+</ul>
 </section><section>
 <h2 id="artificial-neural-networks-54">Artificial Neural Networks</h2>
 <h3 id="dealing-with-overfitting">Dealing with overfitting</h3>
